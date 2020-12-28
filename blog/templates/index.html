@@ -120,7 +120,7 @@
             <div class="category"><a href="#">{{blog.category}}</a></div>
           </div>
           <a href="{% url 'detail' blog.pk %}"> <h3 class="h4">{{blog.title|title}}</h3></a>
-          <p class="text-muted">{{blog.description|safe|slice:200}}...</p>
+          <p class="text-muted">{{blog.description|safe|slice:10}}...</p>
         </div>
       </div>
       {% endfor %}
