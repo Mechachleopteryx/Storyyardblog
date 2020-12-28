@@ -1,0 +1,135 @@
+{% extends 'base.html' %} {% load static %}  {% static "img" as baseUrl %} 
+{% block content %}
+    <div class="container">
+      <div class="row">
+        <!-- Latest Posts -->
+        <main class="post blog-post col-lg-8"> 
+          <div class="container">
+            <div class="post-single">
+              <div class="post-thumbnail"><img src="{{blogs.banner.url}}" alt="..." class="img-fluid"></div>
+              <div class="post-details">
+                <div class="post-meta d-flex justify-content-between">
+                  <div class="category"><a href="#">{{blogs.category}}</a><a href="#"></a></div>
+                </div>
+                <h1>{{blogs.title|title}}<a href="#"><i class="fa fa-bookmark-o"></i></a></h1>
+                <div class="post-footer d-flex align-items-center flex-column flex-sm-row"><a href="#" class="author d-flex align-items-center flex-wrap">
+                    <div class="avatar"><img src="{{blogs.author_pic.url}}" alt="..." class="img-fluid"></div>
+                    <div class="title"><span>{{blogs.author}}</span></div></a>
+                  <div class="d-flex align-items-center flex-wrap">       
+                    <div class="date"><i class="icon-clock"></i>{{blogs.date}}</div>
+                    <div class="views"><i class="icon-clock"></i>{{blogs.time}}
+                    </div>
+                    <div class="comments meta-last"><i class="icon-comment"></i>
+                    {{comment_number}}
+                    </div>
+                  </div>
+                </div>
+                <div class="post-body">
+                  {{blogs.description|safe}}
+                  <br><br>
+                  <hr>
+                <div class="post-comments">
+                  <header>
+                    <h3 class="h6">Post Comments<span class="no-of-comments">({{comment_number}})</span></h3>
+                  </header>
+                  {% for comment in comments %}
+                  <div class="comment">
+                    <div class="comment-header d-flex justify-content-between">
+                      <div class="user d-flex align-items-center">
+                        <div class="image"><img src="{% static 'img/user.svg' %}" alt="..." class="img-fluid rounded-circle"></div>
+                        <div class="title"><strong>
+                          {{comment.author|title}}</strong><span class="date">{{comment.created}}</span></div>
+                      </div>
+                    </div>
+                    <div class="comment-body">
+                      <p>{{comment.text}}</p>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+                <div class="add-comment">
+                  <header>
+                    <h3 class="h6">Leave a reply</h3>
+                  </header>
+                  <form action="" method="POST" class="commenting-form">
+                    {% csrf_token %}
+                    <div class="row">
+                      <div class="form-group col-md-6">
+                        <input type="text" name="authorname" id="username" placeholder="Name" class="form-control" required>
+                      </div>
+                      <div class="form-group col-md-6">
+                        <input type="email" name="author_email" id="useremail" placeholder="Email Address (will not be published)" required class="form-control">
+                      </div>
+                      <div class="form-group col-md-12">
+                        <textarea name="comment" id="usercomment" placeholder="Type your comment" class="form-control" required></textarea>
+                      </div>
+                      <div class="form-group col-md-12">
+                        <button type="submit" name="Create Comment" class="btn btn-secondary">Submit Comment</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+
+        <aside class="col-lg-4">
+          <!-- Widget [Search Bar Widget]-->
+          <div class="widget search">
+            <header>
+              <h3 class="h6">Search the blog</h3>
+            </header>
+            <form action="#" class="search-form">
+              {% csrf_token %}
+              <div class="form-group">
+                <input type="search" name="searchfield" placeholder="What are you looking for?">
+                <button type="submit" class="submit"><i class="icon-search"></i></button>
+              </div>
+            </form>
+          </div>
+          <!-- Widget [Latest Posts Widget]        -->
+          <div class="widget latest-posts">
+            <header>
+              <h3 class="h6">Latest Posts</h3>
+            </header>
+            {% for latest in latests %}
+            <div class="blog-posts">
+              <a href="{% url 'detail' latest.pk %}">
+              <div class="item d-flex align-items-center">
+                  <div class="image"><img
+                     src="{{latest.banner.url}}" alt="..." class="img-fluid"></div>
+                  <div class="title"><strong>{{latest.title|title}} </strong>
+                    <div class="d-flex align-items-center">
+                      <div class="views"><i class="icon-clock"></i>{{blogs.date}}
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+                
+          </div>
+          <!-- Widget [Categories Widget]-->
+         <!-- <div class="widget categories">
+            <header>
+              <h3 class="h6">Categories</h3>
+            </header>
+            <div class="item d-flex justify-content-between">
+              <a href="#">Romanticism</a><span>12</span>
+            </div>
+            <div class="item d-flex justify-content-between">
+              <a href="#">Drama</a><span>25</span>
+            </div>
+            <div class="item d-flex justify-content-between">
+              <a href="#">Tradegy</a><span>8</span>
+            </div>
+            <div class="item d-flex justify-content-between">
+              <a href="#">Tips</a><span>17</span>
+            </div>
+          </div> -->
+          <!-- Widget [Tags Cloud Widget]-->
+        </aside>
+      </div>
+    </div>
+{% endblock %}
