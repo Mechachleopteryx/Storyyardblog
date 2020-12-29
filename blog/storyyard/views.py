@@ -86,7 +86,8 @@ def search_filter(request):
 
 
 def search_results(request):
-    return render(request, 'search_result.html', context=None)
+    allblogs = BLOG.objects.all()
+    return render(request, 'search_result.html', context={:'allblogs':allblogs)
 
 
 def contact(request):
