@@ -43,14 +43,15 @@
 <!-- Gallery Section-->
 <section class="gallery no-padding">
   <div class="row">
+    {% for blog_img in allblogs|slice:4 %}
     <div class="mix col-lg-3 col-md-3 col-sm-6">
       <div class="item">
         <a
-          href="{% static 'img/gallery-1.jpg' %}"
+          href="{{blog_img.banner.url}}"
           data-fancybox="gallery"
           class="image"
           ><img
-            src="{% static 'img/gallery-1.jpg' %}"
+            src="{{blog_img.banner.url}}"
             alt="..."
             class="img-fluid" />
           <div class="overlay d-flex align-items-center justify-content-center">
@@ -58,51 +59,7 @@
         ></a>
       </div>
     </div>
-    <div class="mix col-lg-3 col-md-3 col-sm-6">
-      <div class="item">
-        <a
-          href="{% static 'img/gallery-2.jpg' %}"
-          data-fancybox="gallery"
-          class="image"
-          ><img
-            src="{% static 'img/gallery-2.jpg' %}"
-            alt="..."
-            class="img-fluid" />
-          <div class="overlay d-flex align-items-center justify-content-center">
-            <i class="icon-search"></i></div
-        ></a>
-      </div>
-    </div>
-    <div class="mix col-lg-3 col-md-3 col-sm-6">
-      <div class="item">
-        <a
-          href="{% static 'img/gallery-3.jpg' %}"
-          data-fancybox="gallery"
-          class="image"
-          ><img
-            src="{% static 'img/gallery-3.jpg' %}"
-            alt="..."
-            class="img-fluid" />
-          <div class="overlay d-flex align-items-center justify-content-center">
-            <i class="icon-search"></i></div
-        ></a>
-      </div>
-    </div>
-    <div class="mix col-lg-3 col-md-3 col-sm-6">
-      <div class="item">
-        <a
-          href="{% static 'img/gallery-4.jpg' %}"
-          data-fancybox="gallery"
-          class="image"
-          ><img
-            src="{% static 'img/gallery-4.jpg' %}"
-            alt="..."
-            class="img-fluid" />
-          <div class="overlay d-flex align-items-center justify-content-center">
-            <i class="icon-search"></i></div
-        ></a>
-      </div>
-    </div>
+    {% endfor %}
   </div>
 </section>
 <!-- Page Footer-->
