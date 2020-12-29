@@ -14,7 +14,7 @@
               </div>
               <a href="{% url 'detail' blog.pk %}"> <h2 class="h4">{{blog.title}}</h2></a>
             </header>
-            <p>{{blog.description|safe|slice:400}}...</p>
+            <p>{{blog.description|safe|slice:10}}...</p>
             <footer class="post-footer d-flex align-items-center">
               <a href="{% url 'detail' blog.pk %}" class="author d-flex align-items-center flex-wrap">
                 <div class="avatar">
