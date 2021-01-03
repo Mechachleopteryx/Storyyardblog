@@ -136,4 +136,4 @@ STATICFILES_DIRS = [
 STATIC_ROOT = Path.joinpath(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/banners/'
-MEDIA_ROOT = Path.joinpath(BASE_DIR, 'banners')
+MEDIA_ROOT = Path.joinpath(BASE_DIR, 'media/banners')
