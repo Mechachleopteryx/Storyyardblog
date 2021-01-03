@@ -18,10 +18,10 @@ class BLOG(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.SET_NULL, null=True, blank=True)
     title = models.CharField(max_length=500)
-    banner = models.ImageField(upload_to='blog/banners', blank=True, null=True)
+    banner = models.ImageField(upload_to='banners', blank=True, null=True)
     description = RichTextField()
     author_pic = models.ImageField(
-        upload_to='blog/profile_pic', default='banners/avatar.jpg')
+        upload_to='banners', default='banners/avatar.jpg')
     category = models.ForeignKey(
         Category, on_delete=models.SET_NULL, blank=True, null=True)
     date = models.DateField(auto_now_add=True)
