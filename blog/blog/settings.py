@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '(e9+v8z@a_@#!wxi#h*aq7q!^5in7udpj5j0lb*ya43yeyp*bq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['storyyard.herokuapp.com']
 
 
 # Application definition
